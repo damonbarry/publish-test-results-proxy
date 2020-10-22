@@ -1,0 +1,14 @@
+trigger: none
+pr: none
+
+pool:
+  name: $(pool.name)
+  demands: behind-a-proxy
+
+steps:
+  - script: dotnet test simple-test.csproj --logger trx
+  - task: PublishTestResults@2
+    condition: succeededOrFailed()
+    inputs:
+      testRunner: VSTest
+      testResultsFiles: '**/*.trx'
