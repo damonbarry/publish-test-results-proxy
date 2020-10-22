@@ -15,6 +15,7 @@ steps:
     inputs:
       testRunner: VSTest
       testResultsFiles: '**/*.trx'
+      searchFolder: $(Build.SourcesDirectory)/TestResults
       publishRunAttachments: false
     env:
       http_proxy: $(Agent.ProxyUrl)
