@@ -7,6 +7,9 @@ pool:
 
 steps:
   - script: dotnet test simple-test.csproj --logger trx
+    env:
+      http_proxy: $(Agent.ProxyUrl)
+      https_proxy: $(Agent.ProxyUrl)
   - task: PublishTestResults@2
     condition: succeededOrFailed()
     inputs:
