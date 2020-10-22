@@ -5,6 +5,9 @@ pool:
   name: $(pool.name)
   demands: behind-a-proxy
 
+variables:
+  agent.disablelogplugin: true
+
 steps:
   - script: dotnet test simple-test.csproj --logger trx
     env:
